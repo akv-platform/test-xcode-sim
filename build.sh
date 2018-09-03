@@ -27,5 +27,5 @@ fi
 test $ERROR && exit $ERROR
 
 xcode-select -s "/Applications/$XCODE.app"
-cd "$PRODJECT"
+cd "$PROJECT"
 xcodebuild clean build CODE_SIGN_IDENTITY="" CODE_SIGNING_REQUIRED=NO -target $3 -configuration $4
