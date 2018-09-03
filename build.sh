@@ -4,7 +4,7 @@ PROJECT=$2
 TARGET=$3
 CONFIGURATION=$4
 
-if [ ! $CODE ];then
+if [ ! $XCODE ];then
 	echo "1st param must be the name of Xcode within /Application dir without .app extention"
 	ERROR=1
 fi
@@ -19,8 +19,8 @@ if [ ! $TARGET ];then
 	ERROR=1
 fi
 
-if [ $CONFIGURATION!=Debug || $CONFIGURATION!=Release];then
-	echo "4th param must be either Debug or Release"
+if [ $CONFIGURATION != Debug -a $CONFIGURATION != Release ];then
+	echo "4th param must be either Debug or Release, $CONFIGURATION got "
 	ERROR=1
 fi
 
