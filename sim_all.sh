@@ -9,6 +9,7 @@ test $ERROR && exit $ERROR
 script_dir=`dirname $0`
 . "$script_dir/xcodes.sh"
 for xcode in $XCODES;do
+	echo "Simulate $xcode"
 	project=`echo $xcode|tr [:upper:] [:lower:]|sed 's/[_.]//g'`
 	target=`basename $project`
 	$script_dir/sim.sh "$xcode" "$project" Release $GUID
