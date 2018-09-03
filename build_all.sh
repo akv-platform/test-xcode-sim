@@ -6,7 +6,10 @@ for xcode in $XCODES;do
 	target=`basename $project`
 	$script_dir/build.sh "$xcode" "$project" "$target" Release
 	ec=$?
+	echo "exit code: $ec"
 	test $ec || exit $ec
 	$script_dir/build.sh "$xcode" "$project" "$target" Debug
+	ec=$?
+	echo "exit code: $ec"
 	test $ec || exit $ec
 done
