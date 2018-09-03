@@ -33,10 +33,16 @@ if [ ! -d "$PROJECT" ];then
 fi
 
 sudo xcode-select -s "/Applications/$XCODE.app"
+ec=$?
+echo "Exit code=$ec"
+test $ec -eq 0 || exit $ec
 
 echo "Start simulator $GUID for XCode=$XCODE"
 xcrun simctl boot $GUID
-echo "Exit code=$?"
+ec=$?
+echo "Exit code=$ec"
+test $ec -eq 0 || exit $ec
+
 echo "Wait 25 sec"
 sleep 25
 echo "try to open safari"
@@ -44,23 +50,42 @@ xcrun simctl openurl booted http://google.com
 ec=$?
 echo "Exit code=$ec"
 test $ec -eq 0 || exit $ec
+
 app=`ls -d "$PROJECT/build/$CONFIGURATION-iphones/*.app"`
 echo "instal app: $app"
 xcrun simctl install booted "$app"
-echo "Exit code=$?"
+ec=$?
+echo "Exit code=$ec"
+test $ec -eq 0 || exit $ec
+
 appid=test.`basename "$app"|sed 's/.app//'`
 echo "launch app: $id"
 xcrun simctl launch booted $appid
-echo "Exit code=$?"
+ec=$?
+echo "Exit code=$ec"
+test $ec -eq 0 || exit $ec
+
 echo "get screenshot: $id.png"
 xcrun simctl io booted screenshot "$id.png"
-echo "Exit code=$?"
+ec=$?
+echo "Exit code=$ec"
+test $ec -eq 0 || exit $ec
+
 echo "terminate: $id"
 xcrun simctl terminate booted $id
-echo "Exit code=$?"
+ec=$?
+echo "Exit code=$ec"
+test $ec -eq 0 || exit $ec
+
 echo "uninstall: $id"
 xcrun simctl uninstall booted $id
-echo "Exit code=$?"
+ec=$?
+echo "Exit code=$ec"
+test $ec -eq 0 || exit $ec
+
 echo "shutdown similator"
 xcrun simctl shutdown booted
-echo "Exit code=$?"
+ec=$?
+echo "Exit code=$ec"
+test $ec -eq 0 || exit $ec
+
