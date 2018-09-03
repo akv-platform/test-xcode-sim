@@ -41,7 +41,9 @@ echo "Wait 25 sec"
 sleep 25
 echo "try to open safari"
 xcrun simctl openurl booted http://google.com
-echo "Exit code=$?"
+ec=$?
+echo "Exit code=$ec"
+test $ec -eq 0 || exit $ec
 app=`ls -d "$PROJECT/build/$CONFIGURATION-iphones/*.app"`
 echo "instal app: $app"
 xcrun simctl install booted "$app"
