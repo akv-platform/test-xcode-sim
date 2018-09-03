@@ -19,7 +19,7 @@ if [ ! $TARGET ];then
 	ERROR=1
 fi
 
-if [ $CONFIGURATION != Debug -a $CONFIGURATION != Release ];then
+if [ "x$CONFIGURATION" != xDebug -a "x$CONFIGURATION" != xRelease ];then
 	echo "4th param must be either Debug or Release, $CONFIGURATION got "
 	ERROR=1
 fi
