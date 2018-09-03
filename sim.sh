@@ -15,7 +15,7 @@ if [ ! $PROJECT ];then
 fi
 
 if [ "x$CONFIGURATION" != xDebug -a "x$CONFIGURATION" != xRelease ];then
-	echo "rd param must be either Debug or Release, $CONFIGURATION got "
+	echo "3rd param must be either Debug or Release, $CONFIGURATION got "
 	ERROR=1
 fi
 
