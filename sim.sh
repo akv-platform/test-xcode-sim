@@ -33,7 +33,10 @@ if [ ! -d "$PROJECT" ];then
 fi
 
 pwd
-app=`ls -d "$PROJECT/build/$CONFIGURATION-iphoneos/*.app"`
+app=`ls -d $PROJECT/build/$CONFIGURATION-iphoneos/*.app`
+ec=$?
+echo "Exit code=$ec"
+test $ec -eq 0 || exit $ec
 
 sudo xcode-select -s "/Applications/$XCODE.app"
 ec=$?
