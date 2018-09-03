@@ -51,7 +51,7 @@ ec=$?
 echo "Exit code=$ec"
 test $ec -eq 0 || exit $ec
 
-app=`ls -d "$PROJECT/build/$CONFIGURATION-iphones/*.app"`
+app=`ls -d "$PROJECT/build/$CONFIGURATION-iphoneos/*.app"`
 echo "instal app: $app"
 xcrun simctl install booted "$app"
 ec=$?
