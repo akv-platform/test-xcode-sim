@@ -32,10 +32,17 @@ if [ ! -d "$PROJECT" ];then
 	exit 2
 fi
 
+pwd
+app=`ls -d "$PROJECT/build/$CONFIGURATION-iphoneos/*.app"`
+
 sudo xcode-select -s "/Applications/$XCODE.app"
 ec=$?
 echo "Exit code=$ec"
 test $ec -eq 0 || exit $ec
+
+
+echo "Start shutdown booted if any"
+xcrun simctl shutdown booted
 
 echo "Start simulator $GUID for XCode=$XCODE"
 xcrun simctl boot $GUID
@@ -51,7 +58,6 @@ ec=$?
 echo "Exit code=$ec"
 test $ec -eq 0 || exit $ec
 
-app=`ls -d "$PROJECT/build/$CONFIGURATION-iphoneos/*.app"`
 echo "instal app: $app"
 xcrun simctl install booted "$app"
 ec=$?
