@@ -31,6 +31,6 @@ if [ ! -d "$PROJECT" ];then
 	exit 2
 fi
 
-xcode-select -s "/Applications/$XCODE.app"
+sudo xcode-select -s "/Applications/$XCODE.app"
 cd "$PROJECT"
 xcodebuild clean build CODE_SIGN_IDENTITY="" CODE_SIGNING_REQUIRED=NO -target $3 -configuration $4
