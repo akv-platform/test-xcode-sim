@@ -4,6 +4,7 @@ PROJECT=$2
 CONFIGURATION=$3
 GUID=$4
 
+
 if [ ! $XCODE ];then
 	echo "1st param must be the name of Xcode within /Application dir without .app extention"
 	ERROR=1
