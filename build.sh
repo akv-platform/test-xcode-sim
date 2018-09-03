@@ -26,6 +26,11 @@ fi
 
 test $ERROR && exit $ERROR
 
+if [ ! -d "$PROJECT" ];then
+	echo "$PROJECT directory does not exist"
+	exit 2
+fi
+
 xcode-select -s "/Applications/$XCODE.app"
 cd "$PROJECT"
 xcodebuild clean build CODE_SIGN_IDENTITY="" CODE_SIGNING_REQUIRED=NO -target $3 -configuration $4
