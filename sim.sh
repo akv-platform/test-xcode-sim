@@ -34,7 +34,7 @@ fi
 
 sudo xcode-select -s "/Applications/$XCODE.app"
 
-echo "Start simulator"
+echo "Start simulator $GUID for XCode=$XCODE"
 xcrun simctl boot $GUID
 echo "Wait 25 sec"
 sleep 25
