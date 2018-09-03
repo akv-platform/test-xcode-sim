@@ -7,9 +7,9 @@ for xcode in $XCODES;do
 	$script_dir/build.sh "$xcode" "$project" "$target" Release
 	ec=$?
 	echo "exit code: $ec"
-	test $ec || exit $ec
+	test $ec -ne 0 &&  exit $ec
 	$script_dir/build.sh "$xcode" "$project" "$target" Debug
 	ec=$?
 	echo "exit code: $ec"
-	test $ec || exit $ec
+	test $ec -ne 0 &&  exit $ec
 done
