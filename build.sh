@@ -33,4 +33,4 @@ fi
 
 sudo xcode-select -s "/Applications/$XCODE.app"
 cd "$PROJECT"
-xcodebuild clean build CODE_SIGN_IDENTITY="" CODE_SIGNING_REQUIRED=NO -target $3 -configuration $4
+xcodebuild clean build CODE_SIGN_IDENTITY="" CODE_SIGNING_REQUIRED=NO -target $TARGET -configuration $CONFIGURATION
