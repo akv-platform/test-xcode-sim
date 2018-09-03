@@ -36,21 +36,29 @@ sudo xcode-select -s "/Applications/$XCODE.app"
 
 echo "Start simulator $GUID for XCode=$XCODE"
 xcrun simctl boot $GUID
+echo "Exit code=$?"
 echo "Wait 25 sec"
 sleep 25
 echo "try to open safari"
 xcrun simctl openurl booted http://google.com
+echo "Exit code=$?"
 app=`ls -d "$PROJECT/build/$CONFIGURATION-iphones/*.app"`
 echo "instal app: $app"
 xcrun simctl install booted "$app"
+echo "Exit code=$?"
 appid=test.`basename "$app"|sed 's/.app//'`
 echo "launch app: $id"
 xcrun simctl launch booted $appid
+echo "Exit code=$?"
 echo "get screenshot: $id.png"
 xcrun simctl io booted screenshot "$id.png"
+echo "Exit code=$?"
 echo "terminate: $id"
 xcrun simctl terminate booted $id
+echo "Exit code=$?"
 echo "uninstall: $id"
 xcrun simctl uninstall booted $id
+echo "Exit code=$?"
 echo "shutdown similator"
 xcrun simctl shutdown booted
+echo "Exit code=$?"
